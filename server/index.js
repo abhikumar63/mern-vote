@@ -6,6 +6,7 @@ const connectDB = require('./db/connect')
 
 const db = require('./models');
 const handle = require('./handlers');
+const routes = require('./routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.get('/', (req,res) => {
     res.json({Hello: "World"});
 })
+
+app.use('/api/auth', routes.auth);
 
 app.use(handle.notFound)
 
